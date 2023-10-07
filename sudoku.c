@@ -64,7 +64,7 @@ List* get_adj_nodes(Node* n)
                   nuevoNodo->sudo[fila][columna] = num;
                   pushFront(list, nuevoNodo);
                 }
-              return list;
+              //return list;
             }
           }
       }
