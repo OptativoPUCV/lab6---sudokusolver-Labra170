@@ -60,22 +60,22 @@ int is_valid(Node* n)
             continue;
           }
           
-          if (validarFila[fila][columna] == 0)
+          if (validarFila[fila][columna] == 1)
           {
             return 0;
           }
           validarFila[fila][columna] = 1;
 
-          if (validarColumna[fila][columna] == 0)
+          if (validarColumna[fila][columna] == 1)
           {
             return 0;
           }
           validarColumna[fila][columna] = 1;
 
-          int filaSubMatriz = 3 * (fila / 3) + (columna / 3);
-          int columnaSubMatriz = 3 * (fila % 3) + (columna % 3);
+          int filaSubMatriz = 3 * (fila / 3) + columna / 3;
+          int columnaSubMatriz = 3 * (fila % 3) + columna % 3;
 
-          if (validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] == 0)
+          if (validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] == 1)
           {
             return 0;
           }
