@@ -43,42 +43,47 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n) {
-    int row_check[9][10] = {0};    // Matriz para comprobar números en filas
-    int col_check[9][10] = {0};    // Matriz para comprobar números en columnas
-    int subgrid_check[3][3][10] = {0}; // Matriz para comprobar números en submatrices
+int is_valid(Node* n)
+{
+  int validarFila[9][10] = {0};
+  int validarColumna[9][10] = {0};
+  int validarSubMatriz[3][3][10] = {0};
 
-    for (int row = 0; row < 9; row++) {
-        for (int col = 0; col < 9; col++) {
-            int num = n->sudo[row][col];
+  for (int fila = 0; fila < 9; fila++)
+    {
+      for (int columna = 0; columna < 9; columna++)
+        {
+          int num = n->sudo[fila][columna];
 
-            if (num == 0) {
-                continue;  // Ignorar celdas vacías
-            }
+          if (num == 0)
+          {
+            continue;
+          }
+          
+          if (validarFila[fila][columna] == 1)
+          {
+            return 0;
+          }
+          validarFila[fila][columna] = 1;
 
-            // Verificar fila
-            if (row_check[row][num] == 1) {
-                return 0;  // Número repetido en la fila
-            }
-            row_check[row][num] = 1;
+          if (validarColumna[fila][columna] == 1)
+          {
+            return 0;
+          }
+          validarColumna[fila][columna] = 1;
 
-            // Verificar columna
-            if (col_check[col][num] == 1) {
-                return 0;  // Número repetido en la columna
-            }
-            col_check[col][num] = 1;
+          int filaSubMatriz = 3 * (fila / 3) + columna / 3;
+          int columnaSubMatriz = 3 * (fila % 3) + columna % 3;
 
-            // Verificar submatriz
-            int subgrid_row = 3 * (row / 3) + col / 3;
-            int subgrid_col = 3 * (row % 3) + col % 3;
-            if (subgrid_check[subgrid_row][subgrid_col][num] == 1) {
-                return 0;  // Número repetido en la submatriz
-            }
-            subgrid_check[subgrid_row][subgrid_col][num] = 1;
+          if (validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] == 1)
+          {
+            return 0;
+          }
+          validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] = 1;
         }
     }
-
-    return 1;  // El estado es válido
+  
+    return 1;
 }
 
 
