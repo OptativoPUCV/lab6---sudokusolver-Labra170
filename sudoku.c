@@ -47,7 +47,7 @@ int is_valid(Node* n)
 {
   int validarFila[9][10] = {0};
   int validarColumna[9][10] = {0};
-  int validarSubMatriz[9][10] = {0};
+  int validarSubMatriz[3][3][10] = {0};
 
   for (int fila = 0; fila < 9; fila++)
     {

@@ -37,3 +37,9 @@ sudoku.c:50:7: error: variable ‘validarSubMatriz’ set but not used [-Werror=
 cc1: all warnings being treated as errors
 Compilation failed
 12c911c
+Sun 08 Oct 2023 01:15:12 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  2|4
+total_score: 15/70
+f46828a
