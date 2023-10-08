@@ -59,13 +59,14 @@ int is_valid(Node* n)
           {
             continue;
           }
-          if (validarFila[fila][columna] == 1)
+          
+          if (validarFila[fila][columna] == 0)
           {
             return 0;
           }
           validarFila[fila][columna] = 1;
 
-          if (validarColumna[fila][columna] == 1)
+          if (validarColumna[fila][columna] == 0)
           {
             return 0;
           }
@@ -74,7 +75,7 @@ int is_valid(Node* n)
           int filaSubMatriz = 3 * (fila / 3) + (columna / 3);
           int columnaSubMatriz = 3 * (fila % 3) + (columna % 3);
 
-          if (validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] == 1)
+          if (validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] == 0)
           {
             return 0;
           }
