@@ -43,8 +43,39 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n)
-{
+int is_valid(Node* n) {
+    int row_mark[9][10] = {0}; // Arreglo para marcar números en filas
+    int col_mark[9][10] = {0}; // Arreglo para marcar números en columnas
+    int subgrid_mark[9][10] = {0}; // Arreglo para marcar números en submatrices
+
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            int num = n->sudo[row][col];
+
+            // Verificar en la fila
+            if (row_mark[row][num] == 1) {
+                return 0; // Número repetido en la fila, no es válido
+            }
+            row_mark[row][num] = 1; // Marcar el número en la fila
+
+            // Verificar en la columna
+            if (col_mark[col][num] == 1) {
+                return 0; // Número repetido en la columna, no es válido
+            }
+            col_mark[col][num] = 1; // Marcar el número en la columna
+
+            // Calcular el índice de la submatriz de 3x3
+            int subgrid_idx = 3 * (row / 3) + (col / 3);
+
+            // Verificar en la submatriz
+            if (subgrid_mark[subgrid_idx][num] == 1) {
+                return 0; // Número repetido en la submatriz, no es válido
+            }
+            subgrid_mark[subgrid_idx][num] = 1; // Marcar el número en la submatriz
+        }
+    }
+
+    // Si no se encontraron números repetidos en filas, columnas o submatrices, el estado es válido
     return 1;
 }
 
