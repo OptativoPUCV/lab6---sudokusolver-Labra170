@@ -47,18 +47,13 @@ int is_valid(Node* n)
 {
   int validarFila[9][10] = {0};
   int validarColumna[9][10] = {0};
-  int validarSubMatriz[3][3][10] = {0};
+  int validarSubMatriz[9][10] = {0};
 
   for (int fila = 0; fila < 9; fila++)
     {
       for (int columna = 0; columna < 9; columna++)
         {
           int num = n->sudo[fila][columna];
-
-          if (num == 0)
-          {
-            continue;
-          }
           
           if (validarFila[fila][columna] == 1)
           {
@@ -72,14 +67,13 @@ int is_valid(Node* n)
           }
           validarColumna[fila][columna] = 1;
 
-          int filaSubMatriz = 3 * (fila / 3) + columna / 3;
-          int columnaSubMatriz = 3 * (fila % 3) + columna % 3;
+          int indiceSubMatriz = (fila / 3) * 3 + (columna / 3);
 
-          if (validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] == 1)
+          if (validarSubMatriz[indiceSubMatriz][num] == 1)
           {
             return 0;
           }
-          validarSubMatriz[filaSubMatriz][columnaSubMatriz][num] = 1;
+          validarSubMatriz[indiceSubMatriz][num] = 1;
         }
     }
   
@@ -125,7 +119,27 @@ int is_final(Node* n)
     return 1;
 }
 
-Node* DFS(Node* initial, int* cont){
+Node* DFS(Node* initial, int* cont)
+{
+  /*Stack* stack = createStack();
+  push(stack, initial);
+  *cont = 0;
+
+  while (top(stack) != NULL)
+    {
+      Node* current = (Node*)top(stack);
+      pop(stack);
+
+      (*cont)++;
+
+      if (is_final(initial))
+      {
+        free(current);
+        
+        return current;
+      }
+    }
+  */
   return NULL;
 }
 
